@@ -6,23 +6,23 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-export interface iComponentCreationDialogProps {
+export interface ComponentCreationDialogProps {
   isOpened: boolean;
   onSubmit(path: string, name: string): void;
   onCancel(): void;
 }
 
-interface iState {
+interface ComponentCreationDialogState {
   path: string;
   name: string;
   [x: string]: string;
 }
 
 class ComponentCreationDialog extends Component<
-  iComponentCreationDialogProps,
-  iState
+  ComponentCreationDialogProps,
+  ComponentCreationDialogState
 > {
-  constructor(props: iComponentCreationDialogProps) {
+  constructor(props: ComponentCreationDialogProps) {
     super(props);
     this.state = {
       path: "",

@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-interface iComponentShowCaserProps {
-  component:{
-    name: string,
-    path: string,
-    id: number
-  },
+interface ComponentShowCaserProps {
+  component: {
+    name: string;
+    path: string;
+    id: number;
+  };
 }
 
-class ComponentShowCaser extends Component<iComponentShowCaserProps, {}> {
-  
+class ComponentShowCaser extends Component<ComponentShowCaserProps, {}> {
   render() {
-    
+    const ShowCasedComponent = React.lazy(() =>
+      import("./" + this.props.component.path)
+    );
 
-    const ShowCasedComponent = React.lazy(() => import('./'+this.props.component.path))
-    
     return (
       <React.Suspense fallback="loading">
         <ShowCasedComponent />

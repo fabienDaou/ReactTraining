@@ -17,7 +17,6 @@ export default () => {
     selectedComponent: 0
   });
 
-  const openDialog = () => setDialogOpened(true);
   const cancelDialog = () => setDialogOpened(false);
   const submitDialog = (path: string, name: string) => {
     const components = context.componentList.concat({
@@ -44,7 +43,7 @@ export default () => {
         setSelectedComponent: setSelectedComponent
       }}
     >
-      <SideMenu onAdd={openDialog} />
+      <SideMenu />
       <Switch>
         <Route
           path="/showcase/:name"
