@@ -1,7 +1,7 @@
 import React from "react";
 import SideMenu from "./SideMenu";
 import ComponentCreationDialog from "./ComponentCreationDialog";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import RoutingComponent from "./RoutingComponent";
 import ComponentContext from "../ComponentContext";
 
@@ -45,16 +45,32 @@ export default () => {
       }}
     >
       <SideMenu onAdd={openDialog} />
-      <ComponentCreationDialog
-        isOpened={dialogOpened}
-        onCancel={cancelDialog}
-        onSubmit={submitDialog}
-      />
-
-      <Route
-        path="/showcase/:name"
-        render={({ match }) => <RoutingComponent name={match.params.name} />}
-      />
+      <Switch>
+        <Route
+          path="/showcase/:name"
+          render={({ match }) => <RoutingComponent name={match.params.name} />}
+        />
+        <Route
+          path="/add"
+          exact
+          render={({ history }) => {
+            setDialogOpened(true);
+            return (
+              <ComponentCreationDialog
+                isOpened={dialogOpened}
+                onCancel={() => {
+                  history.push("/");
+                  cancelDialog();
+                }}
+                onSubmit={(path, name) => {
+                  history.push("/");
+                  submitDialog(path, name);
+                }}
+              />
+            );
+          }}
+        />
+      </Switch>
     </ComponentContext.Provider>
   );
 };

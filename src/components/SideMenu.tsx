@@ -6,7 +6,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ComponentContext from "../ComponentContext";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 
 interface iSideMenuProps {
   onAdd: () => void;
@@ -18,12 +18,20 @@ class SideMenu extends Component<iSideMenuProps, {}> {
       <ComponentContext.Consumer>
         {({ componentList, setSelectedComponent }) => (
           <Drawer variant="permanent" anchor="left">
-            <Fab color="primary" aria-label="Add" onClick={this.props.onAdd}>
-              +
-            </Fab>
+            <Route
+              render={({ history }) => (
+                <Fab
+                  color="primary"
+                  aria-label="Add"
+                  onClick={() => history.push("/add")}
+                >
+                  +
+                </Fab>
+              )}
+            />
             <Divider />
             <List>
-              {componentList.map((item, index) => (
+              {componentList.map(item => (
                 <Link to={`/showcase/${item.name}`}>
                   <ListItem
                     button
