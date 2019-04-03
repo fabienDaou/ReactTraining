@@ -7,23 +7,23 @@ import AppRouter from "./AppRouter";
 import RoutingComponent from "./components/RoutingComponent";
 import { Route } from "react-router-dom";
 
-export interface iComponent {
+export interface ShowCasedComponent {
   id: number;
   name: string;
   path: string;
 }
 
-export interface iAppState {
+export interface AppState {
   context: ComponentsRepository;
   dialogOpened: boolean;
 }
 
 interface ComponentsRepository {
-  componentList: iComponent[];
+  componentList: ShowCasedComponent[];
   selectedComponent: number;
 }
 
-class App extends Component<{}, iAppState> {
+class App extends React.Component<{}, AppState> {
   state = {
     context: {
       componentList: [

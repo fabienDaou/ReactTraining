@@ -1,7 +1,7 @@
 import * as React from "react";
 import ComponentContext from "../ComponentContext";
 import ComponentShowCaser from "./ComponentShowCaser";
-import { iComponent } from "../App";
+import { ShowCasedComponent } from "../App";
 import { ErrorBoundary } from "./ErrorBoundary";
 
 export interface RoutingComponentProps {
@@ -11,7 +11,10 @@ export interface RoutingComponentProps {
 const RoutingComponent: React.FunctionComponent<RoutingComponentProps> = ({
   name
 }) => {
-  const findComponentByName = (components: iComponent[], name: string) => {
+  const findComponentByName = (
+    components: ShowCasedComponent[],
+    name: string
+  ) => {
     const comp = components.find(component => component.name === name);
     if (!comp) throw "error";
 

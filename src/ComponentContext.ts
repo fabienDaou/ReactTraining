@@ -1,8 +1,8 @@
 import React from "react";
-import { iComponent } from "./App";
+import { ShowCasedComponent } from "./App";
 
 export interface ComponentContext {
-  componentList: iComponent[];
+  componentList: ShowCasedComponent[];
   selectedComponent: number;
   setSelectedComponent(id: number): void;
 }
