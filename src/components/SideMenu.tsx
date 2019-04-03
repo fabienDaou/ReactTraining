@@ -2,16 +2,16 @@ import React, { Component } from "react";
 import Drawer from "@material-ui/core/Drawer";
 import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
+import { Fab } from "@material-ui/core";
 import ComponentContext from "../ComponentContext";
 import { Link, Route } from "react-router-dom";
-import { Fab } from "@material-ui/core";
 import SideMenuElement from "./SideMenuElement";
 
 class SideMenu extends Component {
   render() {
     return (
       <ComponentContext.Consumer>
-        {({ componentList, setSelectedComponent }) => (
+        {({ componentList, deleteComponent }) => (
           <Drawer variant="permanent" anchor="left">
             <Route
               render={({ history }) => (
@@ -31,7 +31,7 @@ class SideMenu extends Component {
                 <Link to={`/showcase/${item.name}`}>
                   <SideMenuElement
                     {...item}
-                    onSelect={() => setSelectedComponent(item.id)}
+                    onDelete={() => deleteComponent(item.id)}
                   />
                 </Link>
               ))}

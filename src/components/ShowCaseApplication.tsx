@@ -3,7 +3,7 @@ import SideMenu from "./SideMenu";
 import ComponentCreationDialog from "./ComponentCreationDialog";
 import { Route, Switch } from "react-router-dom";
 import RoutingComponent from "./RoutingComponent";
-import ComponentContext, { ShowCasedComponent } from "../ComponentContext";
+import ComponentContext from "../ComponentContext";
 
 export default () => {
   const [dialogOpened, setDialogOpened] = React.useState(false);
@@ -31,16 +31,19 @@ export default () => {
     setDialogOpened(false);
   };
 
-  const setSelectedComponent = (id: number) =>
+  const deleteComponent = (id: number) => {
     setContext({
-      componentList: [...context.componentList],
-      selectedComponent: id
+      componentList: context.componentList.filter(
+        component => component.id !== id
+      ),
+      selectedComponent: 0
     });
+  };
   return (
     <ComponentContext.Provider
       value={{
         ...context,
-        setSelectedComponent: setSelectedComponent
+        deleteComponent: deleteComponent
       }}
     >
       <SideMenu />
