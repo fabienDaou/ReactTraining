@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import "./App.css";
 import SideMenu from "./components/SideMenu";
 import ComponentCreationDialog from "./components/ComponentCreationDialog";
-import ComponentShowCaser from "./components/ComponentShowCaser";
 import ComponentContext from "./ComponentContext";
 import AppRouter from "./AppRouter";
+import RoutingComponent from "./components/RoutingComponent";
+import { Route } from "react-router-dom";
 
 export interface iComponent {
   id: number;
@@ -87,6 +88,13 @@ class App extends Component<{}, iAppState> {
               isOpened={this.state.dialogOpened}
               onCancel={this.cancelDialog}
               onSubmit={this.submitDialog}
+            />
+
+            <Route
+              path="/showcase/:name"
+              render={({ match }) => (
+                <RoutingComponent name={match.params.name} />
+              )}
             />
           </AppRouter>
         </ComponentContext.Provider>
