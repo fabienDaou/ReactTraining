@@ -6,6 +6,8 @@ import ComponentContext from "./ComponentContext";
 import AppRouter from "./AppRouter";
 import RoutingComponent from "./components/RoutingComponent";
 import { Route } from "react-router-dom";
+import Cat from "./components/Cat";
+import Mouse from "./components/Mouse";
 
 export interface ShowCasedComponent {
   id: number;
@@ -97,6 +99,7 @@ class App extends React.Component<{}, AppState> {
               )}
             />
           </AppRouter>
+          <Mouse render={({x, y}) => <Cat x={x} y={y} />} />
         </ComponentContext.Provider>
       </div>
     );
