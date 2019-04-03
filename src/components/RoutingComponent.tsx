@@ -15,22 +15,22 @@ const RoutingComponent: React.FunctionComponent<RoutingComponentProps> = ({
     name: string
   ) => {
     const comp = components.find(component => component.name === name);
-    if (!comp) throw "error";
+    if (!comp) {
+      return {
+        name: "",
+        path: "Error",
+        id: -1
+      };
+    }
 
-    return {
-      name: comp.name,
-      path: comp.path,
-      id: comp.id
-    };
+    return { ...comp };
   };
 
   return (
     <ComponentContext.Consumer>
       {({ componentList }) => (
         <ErrorBoundary>
-          <ComponentShowCaser
-            component={findComponentByName(componentList, name)}
-          />
+          <ComponentShowCaser {...findComponentByName(componentList, name)} />
         </ErrorBoundary>
       )}
     </ComponentContext.Consumer>

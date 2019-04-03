@@ -1,17 +1,10 @@
 import React, { Component } from "react";
+import { ShowCasedComponent } from "../ComponentContext";
 
-interface ComponentShowCaserProps {
-  component: {
-    name: string;
-    path: string;
-    id: number;
-  };
-}
-
-class ComponentShowCaser extends Component<ComponentShowCaserProps, {}> {
+class ComponentShowCaser extends Component<ShowCasedComponent, {}> {
   render() {
     const ShowCasedComponent = React.lazy(() =>
-      import("./" + this.props.component.path)
+      import("./" + this.props.path)
     );
 
     return (
