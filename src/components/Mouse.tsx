@@ -9,8 +9,8 @@ const Mouse: React.FunctionComponent<MouseProps> = ({ render }) => {
   const [y, setY] = React.useState();
 
   const handleMouseMove = (event: { clientX: any; clientY: any }) => {
-    setX(event.clientX);
-    setY(event.clientY);
+    setX(event.clientX - 20);
+    setY(event.clientY - 20);
   };
 
   return <div onMouseMove={handleMouseMove}>{render({ x, y })}</div>;
