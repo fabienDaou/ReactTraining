@@ -1,7 +1,6 @@
 import * as React from "react";
-import ComponentContext from "../ComponentContext";
+import ComponentContext, { ShowCasedComponent } from "../ComponentContext";
 import ComponentShowCaser from "./ComponentShowCaser";
-import { ShowCasedComponent } from "../App";
 import { ErrorBoundary } from "./ErrorBoundary";
 
 export interface RoutingComponentProps {

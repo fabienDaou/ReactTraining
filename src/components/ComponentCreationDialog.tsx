@@ -1,4 +1,4 @@
-import React, { Component, ChangeEvent } from "react";
+import React, { ChangeEvent, FunctionComponent } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -12,78 +12,62 @@ export interface ComponentCreationDialogProps {
   onCancel(): void;
 }
 
-interface ComponentCreationDialogState {
-  path: string;
-  name: string;
-  [x: string]: string;
-}
+const ComponentCreationDialog: FunctionComponent<
+  ComponentCreationDialogProps
+> = ({ isOpened, onSubmit, onCancel }) => {
+  const [path, setPath] = React.useState("");
+  const [name, setName] = React.useState("");
 
-class ComponentCreationDialog extends Component<
-  ComponentCreationDialogProps,
-  ComponentCreationDialogState
-> {
-  constructor(props: ComponentCreationDialogProps) {
-    super(props);
-    this.state = {
-      path: "",
-      name: ""
-    };
-  }
+  const handleCancel = () => onCancel();
 
-  handleCancel = () => {
-    this.props.onCancel();
-  };
+  const handleSubmit = () => onSubmit(path, name);
 
-  handleSubmit = () => {
-    this.props.onSubmit(this.state.path, this.state.name);
-  };
+  const handlePathChange = (event: ChangeEvent<HTMLInputElement>) =>
+    setPath(event.target.value);
 
-  handleChange = (name: string) => (event: ChangeEvent<HTMLInputElement>) => {
-    this.setState({ [name]: event.target.value });
-  };
+  const handleNameChange = (event: ChangeEvent<HTMLInputElement>) =>
+    setName(event.target.value);
 
-  render() {
-    return (
-      <div>
-        <Dialog open={this.props.isOpened} aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title">
-            Choose a component to showcase
-          </DialogTitle>
-          <DialogContent>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              name="name"
-              label="Name"
-              type="text"
-              defaultValue=""
-              onChange={this.handleChange("name")}
-              fullWidth
-            />
-            <TextField
-              margin="dense"
-              id="path"
-              name="path"
-              label="Path"
-              type="text"
-              defaultValue=""
-              onChange={this.handleChange("path")}
-              fullWidth
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleCancel} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={this.handleSubmit} color="primary">
-              Submit
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <Dialog open={isOpened} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">
+          Choose a component to showcase
+        </DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            name="name"
+            label="Name"
+            type="text"
+            defaultValue=""
+            onChange={handleNameChange}
+            fullWidth
+          />
+          <TextField
+            margin="dense"
+            id="path"
+            name="path"
+            label="Path"
+            type="text"
+            defaultValue=""
+            onChange={handlePathChange}
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCancel} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleSubmit} color="primary">
+            Submit
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
+};
 
 export default ComponentCreationDialog;

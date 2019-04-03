@@ -3,7 +3,7 @@ import SideMenu from "./SideMenu";
 import ComponentCreationDialog from "./ComponentCreationDialog";
 import { Route, Switch } from "react-router-dom";
 import RoutingComponent from "./RoutingComponent";
-import ComponentContext from "../ComponentContext";
+import ComponentContext, { ShowCasedComponent } from "../ComponentContext";
 
 export default () => {
   const [dialogOpened, setDialogOpened] = React.useState(false);

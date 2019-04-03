@@ -1,10 +1,15 @@
 import React from "react";
-import { ShowCasedComponent } from "./App";
 
 export interface ComponentContext {
   componentList: ShowCasedComponent[];
   selectedComponent: number;
   setSelectedComponent(id: number): void;
+}
+
+export interface ShowCasedComponent {
+  id: number;
+  name: string;
+  path: string;
 }
 
 const ComponentContext = React.createContext<ComponentContext>({
