@@ -4,7 +4,7 @@ export interface MouseProps {
   render(props: { x: number; y: number }): React.ReactNode;
 }
 
-const Mouse: React.FunctionComponent<MouseProps> = props => {
+const Mouse: React.FunctionComponent<MouseProps> = ({ render }) => {
   const [x, setX] = React.useState();
   const [y, setY] = React.useState();
 
@@ -13,7 +13,7 @@ const Mouse: React.FunctionComponent<MouseProps> = props => {
     setY(event.clientY);
   };
 
-  return <div onMouseMove={handleMouseMove}>{props.render({ x, y })}</div>;
+  return <div onMouseMove={handleMouseMove}>{render({ x, y })}</div>;
 };
 
 export default Mouse;
