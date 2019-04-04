@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { ShowCasedComponent } from "../ComponentContext";
+import { ShowCasedComponent } from "../state/store";
 
 const ComponentShowCaser: FunctionComponent<ShowCasedComponent> = ({
   path

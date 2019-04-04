@@ -5,6 +5,8 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { ShowCaseApplicationState } from "../state/store";
+import { connect } from "react-redux";
 
 export interface ComponentCreationDialogProps {
   isOpened: boolean;
@@ -70,4 +72,20 @@ const ComponentCreationDialog: FunctionComponent<
   );
 };
 
-export default ComponentCreationDialog;
+const mapStateToProps = (state: ShowCaseApplicationState) => {
+  return {
+    componentList: state.componentList
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    deleteComponent: (id: number) =>
+      dispatch({ type: "deleteComponent", payload: { id: id } })
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ComponentCreationDialog);

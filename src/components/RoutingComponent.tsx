@@ -1,13 +1,16 @@
 import * as React from "react";
-import ComponentContext, { ShowCasedComponent } from "../ComponentContext";
+import { ShowCasedComponent, ShowCaseApplicationState } from "../state/store";
 import ComponentShowCaser from "./ComponentShowCaser";
 import { ErrorBoundary } from "./ErrorBoundary";
+import { connect } from "react-redux";
 
 export interface RoutingComponentProps {
+  components: ShowCasedComponent[];
   name: string;
 }
 
 const RoutingComponent: React.FunctionComponent<RoutingComponentProps> = ({
+  components,
   name
 }) => {
   const findComponentByName = (
@@ -27,14 +30,23 @@ const RoutingComponent: React.FunctionComponent<RoutingComponentProps> = ({
   };
 
   return (
-    <ComponentContext.Consumer>
-      {({ componentList }) => (
-        <ErrorBoundary>
-          <ComponentShowCaser {...findComponentByName(componentList, name)} />
-        </ErrorBoundary>
-      )}
-    </ComponentContext.Consumer>
+    <ErrorBoundary>
+      <ComponentShowCaser {...findComponentByName(components, name)} />
+    </ErrorBoundary>
   );
 };
 
-export default RoutingComponent;
+const mapStateToProps = (state: ShowCaseApplicationState) => {
+  return {
+    components: state.componentList
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {};
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RoutingComponent);
