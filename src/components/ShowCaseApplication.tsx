@@ -56,10 +56,6 @@ const ShowCaseApplication: FunctionComponent<ShowCaseApplicationProps> = ({
   );
 };
 
-const mapStateToProps = (state: ShowCaseApplicationState) => {
-  return {};
-};
-
 const mapDispatchToProps = (dispatch: any) => {
   return {
     onAdd: (path: string, name: string) => dispatch(addComponent(path, name))
@@ -67,6 +63,6 @@ const mapDispatchToProps = (dispatch: any) => {
 };
 
 export default connect(
-  mapStateToProps,
+  (state: ShowCaseApplicationState) => {},
   mapDispatchToProps
 )(ShowCaseApplication);
