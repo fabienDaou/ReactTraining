@@ -5,7 +5,7 @@ class TaMere extends Component<{}, {}> {
   
   render() {
     return (
-      <h1>Ta Mere</h1>
+      <h1>Je suis ta mère.</h1>
     );
   }
 }
