@@ -38,7 +38,7 @@ const RoutingComponent: React.FunctionComponent<RoutingComponentProps> = ({
 
 const mapStateToProps = (state: ShowCaseApplicationState) => {
   return {
-    components: state.componentList
+    components: state.components
   };
 };
 

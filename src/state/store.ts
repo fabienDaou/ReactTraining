@@ -1,4 +1,5 @@
 import { createStore, Reducer, AnyAction } from "redux";
+import { ActionNames } from "./actions";
 
 export interface Action extends AnyAction {
   type: string;
@@ -6,8 +7,7 @@ export interface Action extends AnyAction {
 }
 
 export interface ShowCaseApplicationState {
-  componentList: ShowCasedComponent[];
-  selectedComponent: number;
+  components: ShowCasedComponent[];
 }
 
 export interface ShowCasedComponent {
@@ -17,13 +17,12 @@ export interface ShowCasedComponent {
 }
 
 const initialState: ShowCaseApplicationState = {
-  componentList: [
+  components: [
     { id: 0, name: "test", path: "TaMere" },
     { id: 1, name: "test2", path: "TaMere" },
     { id: 2, name: "lonnnnnnnnnnnnnnng", path: "TaMere" },
     { id: 3, name: "pere", path: "TonPere" }
-  ],
-  selectedComponent: 0
+  ]
 };
 
 const reducer: Reducer<ShowCaseApplicationState | undefined, Action> = (
@@ -32,26 +31,20 @@ const reducer: Reducer<ShowCaseApplicationState | undefined, Action> = (
 ) => {
   if (!state) return;
   switch (action.type) {
-    case "addComponent":
+    case ActionNames.ADD_COMPONENT:
       const newComponent: ShowCasedComponent = {
-        id: state.componentList.length,
+        id: state.components.length,
         ...action.payload
       };
       return {
-        componentList: [...state.componentList, newComponent],
-        selectedComponent: state.selectedComponent
+        components: [...state.components, newComponent]
       };
-    case "deleteComponent":
+    case ActionNames.DELETE_COMPONENT:
       return {
-        componentList: state.componentList.filter(
+        components: state.components.filter(
           component => component.id !== action.payload.id
         ),
         selectedComponent: 0
-      };
-    case "selectComponent":
-      return {
-        componentList: [...state.componentList],
-        selectedComponent: action.payload.id
       };
   }
   return state;

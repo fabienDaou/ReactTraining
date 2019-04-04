@@ -5,6 +5,7 @@ import { Route, Switch, RouteComponentProps } from "react-router-dom";
 import RoutingComponent from "./RoutingComponent";
 import { connect } from "react-redux";
 import { ShowCaseApplicationState } from "../state/store";
+import { addComponent } from "../state/actions";
 
 interface ShowCaseApplicationProps extends RouteComponentProps {
   onAdd(path: string, name: string): void;
@@ -61,8 +62,7 @@ const mapStateToProps = (state: ShowCaseApplicationState) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    onAdd: (path: string, name: string) =>
-      dispatch({ type: "addComponent", payload: { path, name } })
+    onAdd: (path: string, name: string) => dispatch(addComponent(path, name))
   };
 };
 

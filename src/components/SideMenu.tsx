@@ -7,6 +7,7 @@ import { Link, Route } from "react-router-dom";
 import SideMenuElement from "./SideMenuElement";
 import { connect } from "react-redux";
 import { ShowCasedComponent, ShowCaseApplicationState } from "../state/store";
+import { deleteComponent } from "../state/actions";
 
 interface SideMenuProps {
   componentList: ShowCasedComponent[];
@@ -47,14 +48,13 @@ class SideMenu extends Component<SideMenuProps> {
 
 const mapStateToProps = (state: ShowCaseApplicationState) => {
   return {
-    componentList: state.componentList
+    componentList: state.components
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    deleteComponent: (id: number) =>
-      dispatch({ type: "deleteComponent", payload: { id: id } })
+    deleteComponent: (id: number) => dispatch(deleteComponent(id))
   };
 };
 

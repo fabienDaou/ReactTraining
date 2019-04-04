@@ -74,7 +74,7 @@ const ComponentCreationDialog: FunctionComponent<
 
 const mapStateToProps = (state: ShowCaseApplicationState) => {
   return {
-    componentList: state.componentList
+    componentList: state.components
   };
 };
 
