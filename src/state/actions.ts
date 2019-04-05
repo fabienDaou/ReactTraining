@@ -1,3 +1,5 @@
+import { AnyAction } from "redux";
+
 export const ActionNames = {
   ADD_COMPONENT: "addComponent",
   DELETE_COMPONENT: "deleteComponent"
@@ -21,3 +23,8 @@ export const deleteComponent = (id: number) => {
     }
   };
 };
+
+export interface Action extends AnyAction {
+  type: string;
+  payload: any;
+}

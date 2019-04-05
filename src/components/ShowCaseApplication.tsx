@@ -4,7 +4,7 @@ import ComponentCreationDialog from "./ComponentCreationDialog";
 import { Route, Switch, RouteComponentProps } from "react-router-dom";
 import RoutingComponent from "./RoutingComponent";
 import { connect } from "react-redux";
-import { ShowCaseApplicationState } from "../state/store";
+import { ShowCaseApplicationState } from "../state/model";
 import { addComponent } from "../state/actions";
 
 interface ShowCaseApplicationProps extends RouteComponentProps {

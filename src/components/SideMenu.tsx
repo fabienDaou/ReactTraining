@@ -6,7 +6,7 @@ import { Fab } from "@material-ui/core";
 import { Link, Route } from "react-router-dom";
 import SideMenuElement from "./SideMenuElement";
 import { connect } from "react-redux";
-import { ShowCasedComponent, ShowCaseApplicationState } from "../state/store";
+import { ShowCasedComponent, ShowCaseApplicationState } from "../state/model";
 import { deleteComponent } from "../state/actions";
 
 interface SideMenuProps {

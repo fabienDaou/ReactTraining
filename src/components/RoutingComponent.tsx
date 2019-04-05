@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ShowCasedComponent, ShowCaseApplicationState } from "../state/store";
+import { ShowCasedComponent, ShowCaseApplicationState } from "../state/model";
 import ComponentShowCaser from "./ComponentShowCaser";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { connect } from "react-redux";
