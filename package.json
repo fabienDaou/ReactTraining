@@ -24,6 +24,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:integration": "jest -c integration/jest.config.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -34,5 +35,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@types/puppeteer": "^1.12.3",
+    "jest-puppeteer": "^4.1.0",
+    "puppeteer": "^1.14.0"
+  }
 }

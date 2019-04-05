@@ -7,6 +7,7 @@ export interface CatProps {
 
 const Cat: React.FunctionComponent<CatProps> = ({ x, y }) => (
   <img
+    id="mycat"
     src={"https://image.flaticon.com/icons/svg/23/23401.svg"}
     height={42}
     width={42}
